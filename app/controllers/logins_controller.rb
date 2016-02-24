@@ -5,6 +5,12 @@ end
 
 MyApp.post "/logins/create" do
     # Process the form to log a person in.
+    @user = User.find_by_email(params["email"])
+    if @user.password == params(["password"])
+      session["user_id"] = @user.id
+      erb :"logins/logged_in"
+    else
+      erb :"logins/failed"
 end
 
 # This controller is for all the CRUD operations related to a Login.
