@@ -12,33 +12,58 @@ MyApp.post "/registered" do
 end
 
 MyApp.get "/current_user" do
-  @user = User.find_by_id(session["user_id"])
-  erb :"users/current_user"
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user != nil
+      @user = User.find_by_id(session["user_id"])
+      erb :"users/current_user"
+    else
+      erb :"users/log_in_first"
+    end
 end
 
 MyApp.get "/form_to_edit_user" do
-  @user = User.find_by_id(session["user_id"])
-  erb :"users/edit_user"
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user != nil
+      @user = User.find_by_id(session["user_id"])
+      erb :"users/edit_user"
+    else
+      erb :"users/log_in_first"
+    end
 end
 
 MyApp.post "/processed" do
-  @user = User.find_by_id(session["user_id"])
-  @user.name = params["name"]
-  @user.email = params["email"]
-  @user.password = params["password"]
-  @user.save
-  erb :"users/processed"
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user != nil
+      @user = User.find_by_id(session["user_id"])
+      @user.name = params["name"]
+      @user.email = params["email"]
+      @user.password = params["password"]
+      @user.save
+      erb :"users/processed"
+    else
+      erb :"users/log_in_first"
+    end
 end
 
 MyApp.get "/form_to_delete_user" do
-  @user = User.find_by_id(session["user_id"])
-  erb :"users/delete_user"
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user != nil
+      @user = User.find_by_id(session["user_id"])
+      erb :"users/delete_user"
+    else
+      erb :"users/log_in_first"
+    end
 end
 
 MyApp.post "/deleted" do
-  @user = User.find_by_id(session["user_id"])
-  @user.delete
-  erb :"users/deleted"
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user != nil
+      @user = User.find_by_id(session["user_id"])
+      @user.delete
+      erb :"users/deleted"
+    else
+      erb :"users/log_in_first"
+    end  
 end
 
 
