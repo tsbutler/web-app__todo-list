@@ -1,0 +1,16 @@
+<h1>Enter new to-do items below.</h1>
+
+<form action="/todos/create" method="post">
+  Title:
+    <input type="text" name="title">
+  Description:
+    <input type="text" name="description">
+  Completed:
+    <input type="dropdown" name="completed">
+      <option value="false">Please select status...</option>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+  User:
+    <input type="number" name="user_id" value="<%= session["user_id"] %>">
+    <input type="submit">
+</form>
