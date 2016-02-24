@@ -17,6 +17,13 @@ MyApp.get "/form_to_edit_user" do
 end
 
 MyApp.post "/processed" do
+  @user = User.find_by_id(session["user_id"])
+  @user.name = params["name"]
+  @user.email = params["email"]
+  @user.password = params["password"]
+  @user.save
   erb :"users/processed"
 end
+
+
 # This controller is for all the CRUD operations related to a User.
