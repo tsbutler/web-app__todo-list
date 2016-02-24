@@ -1,4 +1,11 @@
+MyApp.get "/logins/new" do
+    # Show form that lets a person create a new login
+    erb :"logins/new"
+end
 
+MyApp.post "/logins/create" do
+    # Process the form to log a person in.
+end
 
 # This controller is for all the CRUD operations related to a Login.
 
