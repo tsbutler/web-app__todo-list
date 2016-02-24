@@ -11,6 +11,11 @@ MyApp.post "/registered" do
   erb :"users/registered"
 end
 
+MyApp.get "/current_user" do
+  @user = User.find_by_id(session["user_id"])
+  erb :"users/current_user"
+end
+
 MyApp.get "/form_to_edit_user" do
   @user = User.find_by_id(session["user_id"])
   erb :"users/edit_user"
