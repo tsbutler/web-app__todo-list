@@ -2,15 +2,17 @@
 
 <form action="/todos/create" method="post">
   Title:
-    <input type="text" name="title">
+    <input type="text" name="title"><br>
   Description:
-    <input type="text" name="description">
+    <input type="text" name="description"><br>
   Completed:
-    <input type="dropdown" name="completed">
+    <!-- <input type="dropdown" name="completed"><br>
       <option value="false">Please select status...</option>
       <option value="true">Yes</option>
       <option value="false">No</option>
-  User:
-    <input type="number" name="user_id" value="<%= session["user_id"] %>">
+ -->  User:
+    <input type="number" name="user_id" value="<%= session["user_id"] %>"><br>
     <input type="submit">
 </form>
+
+<a href="/todos/list">Back</a>

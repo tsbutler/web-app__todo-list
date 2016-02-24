@@ -10,4 +10,13 @@ MyApp.post "/registered" do
   @user.save
   erb :"users/registered"
 end
+
+MyApp.get "/form_to_edit_user" do
+  @user = User.find_by_id(session["user_id"])
+  erb :"users/edit_user"
+end
+
+MyApp.post "/processed" do
+  erb :"users/processed"
+end
 # This controller is for all the CRUD operations related to a User.
