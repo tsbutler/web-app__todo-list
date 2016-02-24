@@ -25,5 +25,16 @@ MyApp.post "/processed" do
   erb :"users/processed"
 end
 
+MyApp.get "/form_to_delete_user" do
+  @user = User.find_by_id(session["user_id"])
+  erb :"users/delete_user"
+end
+
+MyApp.post "/deleted" do
+  @user = User.find_by_id(session["user_id"])
+  @user.delete
+  erb :"users/deleted"
+end
+
 
 # This controller is for all the CRUD operations related to a User.
