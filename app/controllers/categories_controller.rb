@@ -1,3 +1,13 @@
+MyApp.get "/categories" do
+  @categories = Category.all
+  erb :"categories/index"
+end
+
+MyApp.get "/categories/:id" do 
+  @category = Category.find_by_id(params["id"])
+  erb :"categories/show"
+end
+
 MyApp.get "/categories/new" do
   erb :"categories/new"
 end
@@ -11,12 +21,12 @@ MyApp.post "/categories/create" do
 end
 
 MyApp.get "/categories/:id/edit" do
-  @category = Category.find_by_id(self.id)
+  @category = Category.find_by_id(params["id"])
   erb :"categories/edit"
 end
 
 MyApp.post "/categories/:id/update" do
-  @category = Category.find_by_id(self.id)
+  @category = Category.find_by_id(params["id"])
   @category = params["category"]
   @category.save
 
@@ -24,31 +34,7 @@ MyApp.post "/categories/:id/update" do
 end
 
 MyApp.post "/categories/:id/delete" do
-  @category = Category.find_by_id(self.id)
-  
+  @category = Category.find_by_id(params["id"])
 
-
-
-
-CRUD for User
-
-- app
-  - views
-    - users
-    - Name all folders in 'views' based on the CONTROLLER they deal with.
-
-Lists all users           | GET  /users            | index.erb | @users = User.all
-Shows one user            | GET  /users/:id        | show.erb  | @user = User.find_by_id(params[:id])
-
-New User (Form)           | GET  /users/new        | new.erb   | 
-Processes New User Form   | POST /users/create     | 
-
-Edit User (Form)          | GET  /users/:id/edit   | edit.erb  | @user = User.find_by_id(params[:id])
-Processes Edit User Form  | POST /users/:id/update |           | @user = User.find_by_id(params[:id])
-
-Deletes a User            | POST /users/:id/delete |           | @user = User.find_by_id(params[:id])
-
-------------------------
-
-Searches for a user       | GET  /users/search
-Toggles some user's value | POST /users/:id/toggle_admin_access
+  redirect "/categories"
+end

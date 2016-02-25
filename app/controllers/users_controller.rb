@@ -1,14 +1,14 @@
-MyApp.get "/users/register_user" do
-  erb :"/users/register_user"
+MyApp.get "/users/new" do
+  erb :"/users/new"
 end
 
-MyApp.post "/users/registered" do
+MyApp.post "/users/create" do
   @user = User.new
   @user.name = params["name"]
   @user.email = params["email"]
   @user.password = params["password"]
   @user.save
-  erb :"users/registered"
+  erb :"users/create"
 end
 
 MyApp.get "/users/:id/profile" do
@@ -21,17 +21,17 @@ MyApp.get "/users/:id/profile" do
     end
 end
 
-MyApp.get "/users/form_to_edit_user" do
+MyApp.get "/users/edit" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
-      erb :"users/edit_user"
+      erb :"users/edit"
     else
       erb :"users/log_in_first"
     end
 end
 
-MyApp.post "/users/processed" do
+MyApp.post "/users/update" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
@@ -39,7 +39,7 @@ MyApp.post "/users/processed" do
       @user.email = params["email"]
       @user.password = params["password"]
       @user.save
-      erb :"users/processed"
+      erb :"users/update"
     else
       erb :"users/log_in_first"
     end

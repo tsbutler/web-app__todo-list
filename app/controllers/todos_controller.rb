@@ -35,7 +35,8 @@ end
 MyApp.get "/todos/edit_todo" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
-      @todo = Todo.find_by_id(session["user_id"])
+      @todo = Todo.find_by_id(self.id)
+      binding.pry
       erb :"todos/edit_todo"
     else
       erb :"users/log_in_first"
