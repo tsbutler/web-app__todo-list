@@ -57,7 +57,7 @@ MyApp.post "/todos/processed" do
     end
 end
 
-MyApp.get "/form_to_delete_todo" do
+MyApp.get "/todos/form_to_delete_todo" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @todo = Todo.find_by_id(session["user_id"])
@@ -67,7 +67,7 @@ MyApp.get "/form_to_delete_todo" do
     end
 end
 
-MyApp.post "/deleted" do
+MyApp.post "/todos/deleted" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @todo = Todo.find_by_id(session["user_id"])

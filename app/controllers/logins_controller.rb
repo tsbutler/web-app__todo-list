@@ -15,8 +15,13 @@ MyApp.post "/logins/create" do
 end
 
 MyApp.get "/logins/log_out" do
-    session["user_id"] = nil
-    erb :"/logins/log_out"
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user != nil
+      session["user_id"] = nil
+      erb :"/logins/log_out"
+    else
+      erb :"users/log_in_first"
+    end  
 end
 
 # This controller is for all the CRUD operations related to a Login.
