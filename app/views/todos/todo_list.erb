@@ -6,24 +6,38 @@
     <th>Description</th>
     <th>Completed</th>
     <th>User ID</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
 
   <tr>
     <% @todos.each do |todo| %>
-      <td>
+      <td align="center">
         <%= todo.title %>
       </td>
 
-      <td>
+      <td align="center">
         <%= todo.description %>
       </td>
 
-      <td>
+      <td align="center">
         <%= todo.completed %>
       </td>
 
-      <td>
+      <td align="center">
         <%= todo.user_id %>
+      </td>
+
+      <td align="center">
+        <form action="/todos/edit_todo" method="get">
+          <input type="submit" value="Edit">
+        </form>
+      </td>
+
+      <td align="center">
+        <form action="/todos/form_to_delete_todo" method="get">
+          <input type="submit" value="Delete">
+        </form>
       </td>
   </tr>  
     <% end %>
