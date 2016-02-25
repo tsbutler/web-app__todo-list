@@ -8,7 +8,8 @@ MyApp.post "/logins/create" do
     @user = User.find_by_email(params["email"])
     if @user.password == params["password"]
       session["user_id"] = @user.id
-      erb :"logins/logged_in"
+      
+      redirect "/users/#{session["user_id"]}/profile"
     else
       erb :"logins/failed"
     end

@@ -1,8 +1,8 @@
-MyApp.get "/register_user" do
+MyApp.get "/users/register_user" do
   erb :"/users/register_user"
 end
 
-MyApp.post "/registered" do
+MyApp.post "/users/registered" do
   @user = User.new
   @user.name = params["name"]
   @user.email = params["email"]
@@ -11,17 +11,17 @@ MyApp.post "/registered" do
   erb :"users/registered"
 end
 
-MyApp.get "/current_user" do
+MyApp.get "/users/:id/profile" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
-      erb :"users/current_user"
+      erb :"users/profile"
     else
       erb :"users/log_in_first"
     end
 end
 
-MyApp.get "/form_to_edit_user" do
+MyApp.get "/users/form_to_edit_user" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
@@ -31,7 +31,7 @@ MyApp.get "/form_to_edit_user" do
     end
 end
 
-MyApp.post "/processed" do
+MyApp.post "/users/processed" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
@@ -45,7 +45,7 @@ MyApp.post "/processed" do
     end
 end
 
-MyApp.get "/form_to_delete_user" do
+MyApp.get "/users/form_to_delete_user" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
@@ -55,7 +55,7 @@ MyApp.get "/form_to_delete_user" do
     end
 end
 
-MyApp.post "/deleted" do
+MyApp.post "/users/deleted" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
