@@ -14,6 +14,11 @@ MyApp.post "/logins/create" do
     end
 end
 
+MyApp.get "/logins/log_out" do
+    session["user_id"] = nil
+    erb :"/logins/log_out"
+end
+
 # This controller is for all the CRUD operations related to a Login.
 
 # Note that "logins" are not stored in the database. But there is still
