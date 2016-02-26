@@ -39,13 +39,13 @@
       </td>
 
       <td align="center">
-        <form action="/todos/edit_todo" method="get">
+        <form action="/todos/edit_todo/<%= todo.id %>" method="get">
           <input type="submit" value="Edit">
         </form>
       </td>
 
       <td align="center">
-        <form action="/todos/form_to_delete_todo" method="get">
+        <form action="/todos/form_to_delete_todo/<%= todo.id %>" method="get">
           <input type="submit" value="Delete">
         </form>
       </td>
