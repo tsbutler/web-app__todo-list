@@ -1,6 +1,6 @@
 <h1>Edit user info below</h1>
 
-<form action="/users/processed" method="post">
+<form action="/users/<%= @user.id %>/update" method="post">
   Name:
     <input type="text" name="name" value="<%= @user.name %>"><br>
   Email:

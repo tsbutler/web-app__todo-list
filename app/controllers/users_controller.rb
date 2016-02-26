@@ -1,14 +1,21 @@
-MyApp.get "/users/new" do
+MyApp.get "/user/new" do
   erb :"/users/new"
 end
 
-MyApp.post "/users/create" do
+MyApp.post "/user/create" do
   @user = User.new
   @user.name = params["name"]
   @user.email = params["email"]
   @user.password = params["password"]
   @user.save
-  erb :"users/create"
+  redirect "/users/#{@user.id}/profile"
+end
+
+MyApp.before "/users*" do
+  @current_user = User.find_by_id(session["user_id"]) 
+    if @current_user == nil
+      redirect "/logins/new"
+    end
 end
 
 MyApp.get "/users/:id/profile" do
@@ -17,21 +24,21 @@ MyApp.get "/users/:id/profile" do
       @user = User.find_by_id(session["user_id"])
       erb :"users/profile"
     else
-      erb :"users/log_in_first"
+      redirect "/logins/new"
     end
 end
 
-MyApp.get "/users/edit" do
+MyApp.get "/users/:id/edit" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
       erb :"users/edit"
     else
-      erb :"users/log_in_first"
+      redirect "/logins/new"
     end
 end
 
-MyApp.post "/users/update" do
+MyApp.post "/users/:id/update" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
@@ -41,28 +48,28 @@ MyApp.post "/users/update" do
       @user.save
       erb :"users/update"
     else
-      erb :"users/log_in_first"
+      redirect "/logins/new"
     end
 end
 
-MyApp.get "/users/form_to_delete_user" do
+MyApp.get "/users/:id/form_to_delete_user" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
       erb :"users/delete_user"
     else
-      erb :"users/log_in_first"
+      redirect "/logins/new"
     end
 end
 
-MyApp.post "/users/deleted" do
+MyApp.post "/users/:id/deleted" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
       @user.delete
       erb :"users/deleted"
     else
-      erb :"users/log_in_first"
+      redirect "/logins/new"
     end  
 end
 

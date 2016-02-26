@@ -4,6 +4,7 @@ It now reads:<br>
 Name: <%= @user.name %><br>
 Email: <%= @user.email %><br>
 Password: <%= @user.password %><br>
-
-<a href="/todos/list">Click here</a> to go back to the To-do list.<br>
+<br>
+<a href="/users/<%= @user.id %>/profile">Click here</a> to go back to your profile .<br>
+<a href="/todos/list">Click here</a> to the To-do list.<br>
 <a href="/logins/log_out">Click here</a> to log out
