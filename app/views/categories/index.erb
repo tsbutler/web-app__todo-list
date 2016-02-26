@@ -1,3 +1,21 @@
 <h1>Category list</h1>
 
+<table border = 1px style="width:50%">
+  <tr>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr>
+    <% @categories.each do |category| %>
+      <td>
+        <%= category.id %>
+      </td>
+
+      <td>
+        <%= category.category %>
+      </td>
+
 <a href="/todos/index">Back</a>
