@@ -9,14 +9,13 @@
     <select name="school">
 
       <option value = 0>Select a category...</option>
-
         <% @categories.each do |category| %>
           <option value="<%= category.id %>">
             <%= category.category %>
           </option>
       <% end %>
 
-    </select>
+    </select><br>
 
   Assigned to:
     <input type="number" name="user_id" value="<%= session["user_id"] %>"><br>

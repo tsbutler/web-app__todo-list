@@ -1,6 +1,7 @@
 MyApp.get "/todos/new" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
+      @categories = Category.all
       erb :"todos/new"
     else
       erb :"users/log_in_first"
@@ -10,6 +11,7 @@ end
 MyApp.post "/todos/create_item" do
   @current_user = User.find_by_id(session["user_id"]) 
     if @current_user != nil
+      @categories = Category.all
       @todos = Todo.new
       @todos.title = params["title"]
       @todos.description = params["description"]
