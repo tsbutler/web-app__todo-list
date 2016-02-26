@@ -5,6 +5,19 @@
     <input type="text" name="title"><br>
   Description:
     <input type="text" name="description"><br>
+  Category:
+    <select name="school">
+
+      <option value = 0>Select a category...</option>
+
+        <% @categories.each do |category| %>
+          <option value="<%= category.id %>">
+            <%= category.category %>
+          </option>
+      <% end %>
+
+    </select>
+
   Completed:
     <input type="checkbox" name="completed"><br>
   User:
