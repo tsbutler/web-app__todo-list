@@ -1,6 +1,6 @@
 <h1>Are you sure you want to delete this?</h1>
 
-<form action="/todos/deleted" method="post">
+<form action="/todos/<%= @todo.id %>/deleted" method="post">
   <input type="submit" value="Yes">
 </form>
 

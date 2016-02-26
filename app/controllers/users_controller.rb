@@ -67,9 +67,8 @@ MyApp.post "/users/:id/deleted" do
     if @current_user != nil
       @user = User.find_by_id(session["user_id"])
       @user.delete
-      erb :"users/deleted"
-    else
-      redirect "/logins/new"
+  
+      redirect "/"
     end  
 end
 

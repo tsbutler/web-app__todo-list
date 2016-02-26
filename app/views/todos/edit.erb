@@ -1,10 +1,10 @@
-<h1>Enter new to-do items below.</h1>
+<h1>Edit To-do list items below.</h1>
 
-<form action="/todos/create_item" method="post">
+<form action="/todos/<%= @todo.id %>/update" method="post">
   Title:
-    <input type="text" name="title"><br>
+    <input type="text" name="title" value="<%= @todo.title %>"><br>
   Description:
-    <input type="text" name="description"><br>
+    <input type="text" name="description" value="<%= @todo.description %>"><br>
   Category:
     <select name="category">
 
@@ -20,8 +20,8 @@
   Assigned to:
     <input type="number" name="user_id" value="<%= session["user_id"] %>"><br>
   Completed:
-    <input type="checkbox" name="completed"><br>
+    <input type="checkbox" name="completed" value="<%= @todo.completed %>"><br>
     <input type="submit">
 </form>
 
-<a href="/todos/list">Back</a>
+<a href="/todos/index">Back</a>
