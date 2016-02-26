@@ -3,11 +3,6 @@ MyApp.get "/categories" do
   erb :"categories/index"
 end
 
-MyApp.get "/categories/:id" do 
-  @category = Category.find_by_id(params["id"])
-  erb :"categories/show"
-end
-
 MyApp.get "/categories/new" do
   erb :"categories/new"
 end
@@ -18,6 +13,11 @@ MyApp.post "/categories/create" do
   @category.save
   
   redirect "/categories"
+end
+
+MyApp.get "/categories/:id" do 
+  @category = Category.find_by_id(params["id"])
+  erb :"categories/show"
 end
 
 MyApp.get "/categories/:id/edit" do

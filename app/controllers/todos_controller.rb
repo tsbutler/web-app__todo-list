@@ -14,9 +14,9 @@ MyApp.post "/todos/create_item" do
       @todos.title = params["title"]
       @todos.description = params["description"]
       @todos.category_id = params["category_id"]
+      @todos.user_id = params["user_id"]
       @todos.created_by = session["user_id"]
       @todos.completed = params["completed"]
-      @todos.user_id = params["user_id"]
       @todos.save
       erb :"todos/list_item_created"
     else

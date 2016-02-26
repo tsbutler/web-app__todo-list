@@ -4,8 +4,10 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th>Completed</th>
-    <th>User ID</th>
+    <th>Category</th>
+    <th>Assigned to</th>
+    <th>Created by</th>
+    <th>Completed</th>   
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -21,11 +23,19 @@
       </td>
 
       <td align="center">
-        <%= todo.completed %>
+        <%= todo.category_id %>
       </td>
 
       <td align="center">
         <%= todo.user_id %>
+      </td>
+
+      <td align="center">
+        <%= todo.created_by %>
+      </td>
+
+      <td align="center">
+        <%= todo.completed %>
       </td>
 
       <td align="center">
@@ -45,5 +55,6 @@
 
 
 <a href="/todos/new">Click here</a> to add new items.<br>
+<a href="/categories/new">Click here</a> to add new categories.<br>
 <a href="/users/:id/profile">Click here</a> to view profile.<br>
 <a href="/logins/log_out">Click here</a> to log out.
